@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
 
-app = Flask(_name_)
+app = Flask(__name__)
 database_url = os.environ.get('DATABASE_URL', 'postgresql://concesionario_kro8_user:sDgbPHOLp8b6nKrAPlZ9kOIcmF5jy38I@dpg-cvlg2g56ubrc73cgd5ag-a.oregon-postgres.render.com/concesionario_kro8')
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url.replace('postgres://', 'postgresql://')
 db = SQLAlchemy(app)
