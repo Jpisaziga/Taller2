@@ -3,17 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
-# Cargar variables de entorno
-load_dotenv()
 
-app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY') or 'una-clave-secreta-muy-segura'
-
-# Configuración de PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') or \
-    'postgresql://usuario:contraseña@localhost/nombre_basedatos'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app = Flask(_name_)
+database_url = os.environ.get('DATABASE_URL', 'postgresql://concesionario_kro8_user:sDgbPHOLp8b6nKrAPlZ9kOIcmF5jy38I@dpg-cvlg2g56ubrc73cgd5ag-a.oregon-postgres.render.com/concesionario_kro8')
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url.replace('postgres://', 'postgresql://')
 db = SQLAlchemy(app)
 
 # Modelo de Producto
