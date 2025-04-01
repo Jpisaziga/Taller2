@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 
 app = Flask(__name__)
+port = int(os.environ.get('PORT', 10000))  # Usa el puerto de Render o 10000 por defecto
+app.run(host='0.0.0.0', port=port)
 database_url = os.environ.get('DATABASE_URL', 'postgresql://concesionario_kro8_user:sDgbPHOLp8b6nKrAPlZ9kOIcmF5jy38I@dpg-cvlg2g56ubrc73cgd5ag-a.oregon-postgres.render.com/concesionario_kro8')
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url.replace('postgres://', 'postgresql://')
 db = SQLAlchemy(app)
